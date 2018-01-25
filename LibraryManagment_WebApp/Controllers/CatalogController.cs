@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LibraryData;
+using LibraryManagment_WebApp.Models.Catalog;
 
 namespace LibraryManagment_WebApp.Controllers
 {
@@ -19,6 +20,17 @@ namespace LibraryManagment_WebApp.Controllers
         public IActionResult Index()
         {
             var assetModels = _assets.GetAll();
+            var listingresult = assetModels
+                .Select(result => new AssetIndexViewModel
+                {
+                    Id = result.Id,
+                    Title = result.Title,
+                    Author = _assets.GetAuthor(result.Id),
+                    NumberOfCopies = result.NumberOfCopies,
+                    BookIndex = _assets.GetBookIndex(result.Id),
+                    ImageUrl = result.ImageUrl,
+                    Type = _assets.GetType(result.Id),
+                });
         }
     }
 }

@@ -11,7 +11,6 @@ namespace LibraryData
         public DbSet<Client> Clients { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Comic> Comics { get; set; }
-        public DbSet<Magazine> Magazines { get; set; }
         public DbSet<CheckOut> CheckOuts { get; set; }
         public DbSet<CheckoutHistory> CheckoutHistories { get; set; }
         public DbSet<BranchHours> BranchHours{ get; set; }
