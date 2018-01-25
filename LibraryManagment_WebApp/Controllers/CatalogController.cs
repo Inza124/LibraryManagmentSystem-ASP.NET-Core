@@ -31,6 +31,12 @@ namespace LibraryManagment_WebApp.Controllers
                     ImageUrl = result.ImageUrl,
                     Type = _assets.GetType(result.Id),
                 });
+
+            var model = new AssetIndexModel()
+            {
+                Assets = listingresult
+            };
+        return View(model);
         }
     }
 }
