@@ -35,9 +35,6 @@ namespace LibraryServices
             var isComic = _context.LibraryAssets.OfType<Comic>()
                 .Where(assets => assets.Id == id).Any();
 
-            var isMagazine = _context.LibraryAssets.OfType<Magazine>()
-                .Where(assets => assets.Id == id).Any();
-
             return isBook ?
                 _context.Books.FirstOrDefault(book => book.Id == id).Author :
                 _context.Comics.FirstOrDefault(comics => comics.Id == id).Author
@@ -73,7 +70,9 @@ namespace LibraryServices
 
         public string GetType(int id)
         {
-            throw new NotImplementedException();
+            var books = _context.LibraryAssets.OfType<Book>().Where(book => book.Id == id);
+
+            return books.Any() ? "Book" : "Comic";
         }
     }
 }
