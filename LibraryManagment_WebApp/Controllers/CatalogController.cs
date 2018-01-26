@@ -38,5 +38,23 @@ namespace LibraryManagment_WebApp.Controllers
             };
         return View(model);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var asset = _assets.GetById(id);
+            var model = new AssetDetailModel
+            {
+                AssetId = id,
+                Title = asset.Title,
+                Year = asset.Year,
+                Status = asset.Status.Name,
+                ImageUrl = asset.ImageUrl,
+                Author = _assets.GetAuthor(id),
+                CurrentLocation = _assets.GetCurrentLocation(id).Name,
+                ISBN = _assets.GetBookIndex(id),
+                BookIndex = _assets.GetBookIndex(id)
+            };
+            return View(model);
+        }
     }
 }
