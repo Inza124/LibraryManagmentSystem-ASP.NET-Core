@@ -10,7 +10,6 @@ namespace LibraryData.Models
         [Required]
         public string Author { get; set; }
 
-        [Required]
         public int Number { get; set; }
     }
 }
