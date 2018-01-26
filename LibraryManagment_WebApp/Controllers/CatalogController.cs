@@ -20,7 +20,7 @@ namespace LibraryManagment_WebApp.Controllers
         public IActionResult Index()
         {
             var assetModels = _assets.GetAll();
-            var listingresult = assetModels
+            var listingResult = assetModels
                 .Select(result => new AssetIndexViewModel
                 {
                     Id = result.Id,
@@ -34,7 +34,7 @@ namespace LibraryManagment_WebApp.Controllers
 
             var model = new AssetIndexModel()
             {
-                Assets = listingresult
+                Assets = listingResult
             };
         return View(model);
         }
